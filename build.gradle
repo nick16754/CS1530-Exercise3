@@ -5,6 +5,30 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.5
 
+test {
+	testLogging {
+		events 'started', 'passed'
+	}
+}
+
+task sequenceHelp {
+
+	doLast{ 
+		println "Integer Sequence Project"
+		println "Given an integer n as an argument, displays Tri(n) and LC(n)."
+	}
+}
+
+task run (type: JavaExec) {
+	main = 'Main'
+	classpath = sourceSets.main.runtimeClasspath
+
+	if (project.hasProperty("appArgs")) {
+		args(appArgs)
+	}
+
+}
+
 repositories {
     mavenCentral()
 }
