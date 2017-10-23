@@ -10,7 +10,7 @@ public class Main {
             System.exit(1);
         } else {
             try {
-                input = Integer.parseInt(args[1]);
+                input = Integer.parseInt(args[0]);
             } catch (Exception e) {
                 System.out.println("Invalid arguments!");
                 System.exit(1);
