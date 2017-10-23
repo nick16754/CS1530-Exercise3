@@ -2,6 +2,9 @@ group 'cs1530'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "Main"
 
 sourceCompatibility = 1.5
 
@@ -19,13 +22,14 @@ task sequenceHelp {
 	}
 }
 
-task run (type: JavaExec) {
-	main = 'Main'
-	classpath = sourceSets.main.runtimeClasspath
-
-	if (project.hasProperty("appArgs")) {
-		args(appArgs)
-	}
+run {
+	
+	try {
+        systemProperties System.getProperties()
+		args System.getProperty("args").split()
+    } catch (Exception e) {
+        // println "Please add -Dargs=\"...\" even if it is empty"
+    }
 
 }
 
